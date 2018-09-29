@@ -2,6 +2,25 @@
 A simple python graph class demonstrating the essential 
 facts and functions of graphs
 """
+import numpy as np
+
+class Node(object):
+    """
+    give all the nodes a particular attributes
+    u.d = distance from the source node
+    u.pi = predecessor node, for drawing the shortest path
+    u.color = tracks what's been looked at
+    """
+    def __init(self,name=None):
+        # heres where actually put the three attributes in there
+        self.d = np.nan 
+        self.pi = None
+        self.name = name
+
+        # possible colors are 'white': unsearched non starting node
+        #                     'grey' : a node in the queue (it's pi node should be black)
+        #                     'black': a searched location
+        self.color = 'white'
 
 class Graph(object):
 
@@ -65,6 +84,16 @@ class Graph(object):
             res += str(edge) + " "
         return res
 
+    def __init_graph(self):
+        """
+        The idea is that this method operates on each node in the graph
+        for each vertex "u" in the graph
+            u.color = white
+            u.d = infinity
+            u.pi = NIL
+        """
+        pass
+
 if __name__ == "__main__":
     g = {   "a" : ["d"], 
             "b" : ["c"],
@@ -81,5 +110,6 @@ if __name__ == "__main__":
 
     print("Edges of graph:")
     print(graph.edges())
+    print(g["c"])
 
         
