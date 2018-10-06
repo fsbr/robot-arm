@@ -11,7 +11,7 @@ class Node(object):
     u.pi = predecessor node, for drawing the shortest path
     u.color = tracks what's been looked at
     """
-    def __init(self,name=None):
+    def __init__(self,name):
         # heres where actually put the three attributes in there
         self.d = np.nan 
         self.pi = None
@@ -23,6 +23,10 @@ class Node(object):
         self.color = 'white'
 
 class Graph(object):
+    """
+    the graph class uses nodes (which i've made a separate class of)
+    and emphasises the connections between them, (vertices)
+    """
 
     def __init__(self, graph_dict=None):
         """ initializes a graph object
@@ -32,11 +36,23 @@ class Graph(object):
         if graph_dict == None:
             graph_dict = {}
         self.__graph_dict = graph_dict
+        __makeData(__graph_dict)
 
-    def vertices(self):
+    def __makeData(self):
         """ returns the vertices of a graph """
-        return list(self.__graph_dict.keys())
+        # all i diid was apply the Node class here
+        # somehow it will WORK
+        li = []
+        for k in self.__graph_dict.keys():
+            k = Node(k)
+            li.append(k)
 
+        return li
+        #return list(self.__graph_dict.keys())
+    
+    def printVertices(self):
+
+        return list(self.__graph_dict.keys())
     def edges(self):
         """ returns the edges of a graph """
         return self.__generate_edges()
@@ -95,6 +111,9 @@ class Graph(object):
         pass
 
 if __name__ == "__main__":
+
+    # okay idk why this is taking me so long but
+    # 
     g = {   "a" : ["d"], 
             "b" : ["c"],
             "c" : ["b", "c", "d", "e"],
@@ -106,7 +125,7 @@ if __name__ == "__main__":
     graph = Graph(g)
     
     print("Vertices of graph:")
-    print(graph.vertices())
+    print(graph.printVertices())
 
     print("Edges of graph:")
     print(graph.edges())
