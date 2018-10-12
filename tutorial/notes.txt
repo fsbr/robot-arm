@@ -1,0 +1,8 @@
+yes i am doing this because i am a scrub and i do not understand graph search unless
+it is spelled out for me specifically.  after i learn this, i will go through trons hw
+assignment again because.  yes.
+
+so last time i worked on a directed graph. now i want to do it
+in a grid.
+
+
