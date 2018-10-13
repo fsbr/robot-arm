@@ -9,4 +9,4 @@ connection= {
 
 for f in connection:
     print(connection['B'])
-    print(connection[A])
+    print(connection[id])
