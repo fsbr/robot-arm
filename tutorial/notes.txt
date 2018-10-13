@@ -6,3 +6,7 @@ so last time i worked on a directed graph. now i want to do it
 in a grid.
 
 
+i need a workflow where i do most of that small work like small scripts etcA
+in a side directory and then i have like an area where i actually do the production code
+
+

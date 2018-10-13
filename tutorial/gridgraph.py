@@ -39,6 +39,9 @@ def breadth_first_search_1(graph,start):
     visited = {}
     visited[start] = True
 
+    # add in the back trace
+    path = {}
+
     # this is why its a function so you can call it like this   
     while not frontier.empty():
         current = frontier.get()
@@ -49,6 +52,7 @@ def breadth_first_search_1(graph,start):
             if next not in visited:
                 frontier.put(next)
                 visited[next] = True 
+            print(visited)
 #all_nodes = []
 #for x in range(20):
 #    for y in range(10):
@@ -88,5 +92,5 @@ if __name__ == "__main__":
         'E' : ['B']
     }
 
-    breadth_first_search_1(example_graph,'A')
+    breadth_first_search_1(example_graph,'B')
 
