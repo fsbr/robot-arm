@@ -27,9 +27,11 @@ class Queue:
 class Node:
     def __init__(self):
         # set to the CLRS defaults
+        self.name = "untitled"
         self.color = "white" # grey is on deck, black is done
         self.d = np.inf
         self.pi = None
+        self.Neighbors = {}
 
         # get the location of the node in the grid
         self.x = 0
@@ -37,18 +39,17 @@ class Node:
         self.location = (self.x,self.y)
 
 class SimpleGraph:
-    def __init__(self):
+    def __init__(self,edgeList):
         # declares the nodes and their connections as a dictionary
         self.edges = {}
 
+        for f in edgeList:
+            Node.name = f
+            print(Node.name)
+            Node.neighbors = edgeList[f]
+
     def neighbors(self,id):
         return self.edges[id]
-
-    def createNodes(self):
-        # build the nodes in the graph
-        for f in connection:
-            Node.name = f
-            Node.neighbors = connection[f]
     
 
 def BFS(graph, start):
@@ -60,13 +61,16 @@ def BFS(graph, start):
     pass
 
 if __name__ == "__main__":
-    example_graph = SimpleGraph()
-    example_graph.edges = {
-        'A' : ['B'],
-        'B' : ['A','C','D'],
-        'C' : ['A'],
-        'D' : ['E', 'A'],
-        'E' : ['B']
-    }  
 
+    A = Node()
+    A.
+#    adjList= {
+#        'A' : ['B'],
+#        'B' : ['A','C','D'],
+#        'C' : ['A'],
+#        'D' : ['E', 'A'],
+#        'E' : ['B']
+#    }  
+ 
+    example_graph = SimpleGraph(adjList)
    
