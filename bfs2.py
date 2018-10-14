@@ -60,7 +60,7 @@ class Node:
         return self.edges[id]
     
 
-def bfs(graph, start):
+def bfs(graph, start, end):
     # inputs: 
     # graph: a collection of points
     # start: a starting node within 'graph'
@@ -74,18 +74,28 @@ def bfs(graph, start):
 
     q = Queue()
     q.put(start)
-    while ~q.empty():
+    while not q.empty():
         u = q.pop()
         for v in u.neighbors:
-            print("visiting",v.name)
-            print("color", v.color)
             if v.color == "white":
                 v.color = "grey"
                 v.d = u.d + 1
                 v.pi = u
                 q.put(v)
+                print("visiting",v.name)
+                print("dist",v.d)
+                print("pi",v.pi.name)
+            if v.name == end:
+                # print allt he predecessor nodes until you get to the starting node
+                # haaaaa
+                currentNode = v
+                backTrace = []
+                while currentNode != start:
+                    backTrace.append(currentNode.pi.name)
+                    currentNode = currentNode.pi
+                print("backTrace",backTrace)
+            
         u.color = "black"
-
 if __name__ == "__main__":
 
     # basic use case of a queue
@@ -129,4 +139,4 @@ if __name__ == "__main__":
 
     
     # the golden GOOSE
-    bfs(graph,A)
+    bfs(graph,A,"E")
