@@ -23,7 +23,7 @@ class Queue:
     def put(self, x):
         self.elements.append(x)
     
-    def get(self):
+    def pop(self):
         return self.elements.popleft()
 
 class Node:
@@ -33,40 +33,60 @@ class Node:
         self.color = "white" # grey is on deck, black is done
         self.d = np.inf
         self.pi = None
-        self.Neighbors = {}
+        self.neighbors =[] 
 
         # get the location of the node in the grid
         self.x = 0
         self.y = 0
         self.location = (self.x,self.y)
+    def printNeighbors(self):
+        neighborsList = []
+        for n in self.neighbors:
+            neighborsList.append(n.name) 
+        print("my neighbors are", neighborsList)
 
-class SimpleGraph:
-    def __init__(self,edgeList):
-        # declares the nodes and their connections as a dictionary
-        self.edges = {}
-
-        for f in edgeList:
-            Node.name = f
-            print(Node.name)
-            Node.neighbors = edgeList[f]
+# i'm thinking we may delete this object
+#class SimpleGraph:
+#    def __init__(self,edgeList):
+#        # declares the nodes and their connections as a dictionary
+#        self.edges = {}
+#
+#        for f in edgeList:
+#            Node.name = f
+#            print(Node.name)
+#            Node.neighbors = edgeList[f]
 
     def neighbors(self,id):
         return self.edges[id]
     
 
-def BFS(graph, start):
+def bfs(graph, start):
     # inputs: 
     # graph: a collection of points
     # start: a starting node within 'graph'
 
     # performs the BFS search for path planning as close as possible to CLRS
-    pass
+    # lines 1-7 of CLRS are done in the NODE object by default
+
+    start.color = "grey"
+    start.d = 0
+    # start.pi = None already
+
+    q = Queue()
+    q.put(start)
+    while ~q.empty():
+        u = q.pop()
+        for v in u.neighbors:
+            print("visiting",v.name)
+            print("color", v.color)
+            if v.color == "white":
+                v.color = "grey"
+                v.d = u.d + 1
+                v.pi = u
+                q.put(v)
+        u.color = "black"
 
 if __name__ == "__main__":
-
-
-    # basically instead of ints, im gonna have "nodes"
-
 
     # basic use case of a queue
     a = [1,2,3,4,5]    
@@ -77,6 +97,36 @@ if __name__ == "__main__":
         print(q.elements) 
 
     for s in range(0,len(a)): 
-        A = q.get()
+        A = q.pop()
         print("just popped",A)
-        print("total queue",q.elements)
+        print(q.empty())
+
+    # lets make a graph i literally dont care how scrubby this is
+    # we'll get there eventually
+    A = Node()
+    B = Node()
+    C = Node()
+    D = Node()
+    E = Node()
+
+    # name each one
+    A.name = "A"
+    B.name = "B"
+    C.name = "C"
+    D.name = "D"
+    E.name = "E"
+
+    #insert neighbors
+    A.neighbors = [B]
+    B.neighbors = [A,C,D]
+    C.neighbors = [A]
+    D.neighbors = [A,E]
+    E.neighbors = [B] 
+
+    graph = [A,B,C,D,E]
+    # for node in graph:
+        # node.printNeighbors()
+
+    
+    # the golden GOOSE
+    bfs(graph,A)
