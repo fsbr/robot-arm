@@ -8,6 +8,7 @@
 # imports
 import numpy as np
 import collections
+
 class Queue:
     # implements the First in first out queue struct.
     def __init__(self):
@@ -45,20 +46,6 @@ class Node:
             neighborsList.append(n.name) 
         print("my neighbors are", neighborsList)
 
-# i'm thinking we may delete this object
-#class SimpleGraph:
-#    def __init__(self,edgeList):
-#        # declares the nodes and their connections as a dictionary
-#        self.edges = {}
-#
-#        for f in edgeList:
-#            Node.name = f
-#            print(Node.name)
-#            Node.neighbors = edgeList[f]
-
-    def neighbors(self,id):
-        return self.edges[id]
-    
 
 def bfs(graph, start, end):
     # inputs: 
