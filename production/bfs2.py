@@ -17,8 +17,6 @@ class Queue:
         self.elements = collections.deque()
 
     def empty(self):
-        # why do this in a function like this and not like 
-        # a variable declaration?
         return len(self.elements) == 0
 
     def put(self, x):
@@ -56,6 +54,8 @@ def gridGraph(X,Y):
             N.x = x
             N.y = y
             N.name = str(x) + "_" + str(y)
+            
+            # add in the neighbors
             graph.append(N)
     return graph    
 
