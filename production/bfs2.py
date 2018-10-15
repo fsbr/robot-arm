@@ -46,6 +46,17 @@ class Node:
             neighborsList.append(n.name) 
         print("my neighbors are", neighborsList)
 
+def gridGraph(X,Y):
+    # takes in X and Y as coordinate dimensions
+    # outputs a graph search uhhh grid
+    graph = []
+    for x in range(0,X):
+        for y in range(0,Y):
+            N = Node()         
+            N.x = x
+            N.y = y
+            graph.append(N)
+    return graph    
 
 def bfs(graph, start, end):
     # inputs: 
@@ -83,6 +94,8 @@ def bfs(graph, start, end):
                 print("backTrace",backTrace)
             
         u.color = "black"
+
+
 if __name__ == "__main__":
 
     # basic use case of a queue
@@ -127,3 +140,8 @@ if __name__ == "__main__":
     
     # the golden GOOSE
     bfs(graph,A,"E")
+
+    m =  gridGraph(20,10)
+
+    # list comprehensions are boss
+    [print(n.name) for n in m]
