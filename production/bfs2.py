@@ -55,6 +55,7 @@ def gridGraph(X,Y):
             N = Node()         
             N.x = x
             N.y = y
+            N.name = str(x) + "_" + str(y)
             graph.append(N)
     return graph    
 
@@ -85,7 +86,6 @@ def bfs(graph, start, end):
                 print("pi",v.pi.name)
             if v.name == end:
                 # print allt he predecessor nodes until you get to the starting node
-                # haaaaa
                 currentNode = v
                 backTrace = []
                 while currentNode != start:
